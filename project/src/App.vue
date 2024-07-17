@@ -4,9 +4,10 @@
         <!-- :initialMessages="initialMessages" --> 
     <h1>Deep Chat</h1>
     <deep-chat
-      v-bind:demo="{ displayLoadingBubble: true }" 
+      :demo="{displayLoadingBubble}"
       v-bind:textInput="{ placeholder: { text: 'Type anything here!' } }"
-    />
+      />
+      <button @click="toggle()">Toggle Bubble</button>
   </div>
 </template>
 
@@ -22,10 +23,17 @@ export default {
         { role: 'user', text: 'Hey, how are you today?' },
         { role: 'ai', text: 'I am doing very well!' },
       ],
+      displayLoadingBubble: true,
     };
   },
+  methods:{
+        toggle: function() {
+          this.displayLoadingBubble = !this.displayLoadingBubble
+    }
+  }
 };
 </script>
+
 
 <style>
 div {
